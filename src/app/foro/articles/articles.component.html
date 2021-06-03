@@ -1,0 +1,6 @@
+<p>articles works!</p>
+<div *ngFor="let item of articles, index as i "> 
+    <h3> {{item.title}} </h3> 
+    <h5> {{item.body}} </h5> 
+    <button (click)= "loadAnArticle(i)" > Ver Artículo </button> 
+</div> 

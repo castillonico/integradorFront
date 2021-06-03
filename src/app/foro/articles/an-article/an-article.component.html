@@ -1,0 +1,20 @@
+<button (click)="goBackArticles()"> Volver </button>
+<p *ngIf="anArticle">an-article works!</p> 
+<h3>{{anArticle.title}}</h3> 
+<h4>{{anArticle.body}}</h4> 
+<button (click)="loadComments()"> Comentarios </button> 
+<button (click)="toggleDetails()"> Detalles </button> 
+<p *ngIf="details"> 
+    {{anArticle.author.username}} 
+    {{anArticle.createdAt}} 
+    {{anArticle.tagList}} 
+</p>
+
+<ul *ngIf="listOfComments">
+    <li *ngFor="let item o f listOfComments">
+        <h5>{{item.author.username}}</h5> 
+        <p>{{item.body}}</p>
+    </li>
+</ul> 
+
+<button> Agregar Comentario </button>
