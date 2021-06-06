@@ -6,5 +6,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class LoginService {
 
-  
+  urlBase = 'https://conduit.productionready.io/api/users/login'; 
+  userLogged: any; 
+
+  constructor( private http: HttpClient) { }; 
+
+  getLogin ( user:any ) { 
+    this.userLogged = this.http.post(this.urlBase, user); 
+    return this.userLogged
+  } 
+
 }

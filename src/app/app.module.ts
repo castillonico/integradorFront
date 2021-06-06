@@ -11,6 +11,7 @@ import { AnArticleComponent } from './foro/articles/an-article/an-article.compon
 import { CommentsComponent } from './foro/articles/an-article/comments/comments.component';
 import { HeaderComponent } from './public/header/header.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,9 +1,9 @@
 <p>login works!</p>
 
-<form>
-    <input type="text" id="mail"> E-mail: 
-    <input type="password" id="pass"> Password 
-    <button> Ingresar </button>
+<form [formGroup]="formLogin">
+    <input formControlName= "email" type="text" > E-mail: 
+    <input formControlName = "pass" type="password" > Password 
+    <button (click)="loadLogin()"> Ingresar </button>
 </form>
 
-<button> Ver Usuario </button>
+<button (click)= "actualUser()"> Ver Usuario </button>

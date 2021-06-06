@@ -23,13 +23,13 @@ export class AnArticleComponent implements OnInit {
   loadComments () {
     this.slug = this.anArticle.slug; 
     this.listOfComments = this.service.getComments(this.slug); 
+    console.log(this.listOfComments); 
   }
   toggleDetails() {
     this.details = !this.details; 
   }
   goBackArticles () {
     this.routes.navigate(['articles']); 
-    
   }
 
 }
