@@ -1,1 +1,7 @@
-<p>register works!</p>
+<form [formGroup]="regForm">
+    <input formControlName="newUser" type="text"> Usuario 
+    <input formControlName="newMail" type="email"> Email 
+    <input formControlName="newPass" type="password"> Password
+</form> 
+
+<button (click)="createUser()"> Crear Usuario </button>

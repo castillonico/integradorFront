@@ -1,11 +1,11 @@
 <br>
 <button (click)="goBackArticles()"> Volver </button>
 
-<p *ngIf="anArticle">an-article works!</p> 
 <h3>{{anArticle.title}}</h3> 
 <h4>{{anArticle.body}}</h4> 
-<button (click)="loadComments()"> Comentarios </button> 
 <button (click)="toggleDetails()"> Detalles </button> 
+<br>
+<button (click)="loadComments()"> Ver Comentarios </button> 
 
 <p *ngIf="details"> 
     {{anArticle.author.username}} 
@@ -13,11 +13,16 @@
     {{anArticle.tagList}} 
 </p>
 
-<ul *ngIf="listOfComments">
+<ul *ngIf="showComments">
     <li *ngFor="let item of listOfComments">
         <h5>{{item.author.username}}</h5> 
         <p>{{item.body}}</p>
     </li>
 </ul> 
 
-<button> Agregar Comentario </button>
+<button (click)= "letComment()"> Agregar Comentario </button> 
+<div *ngIf="commentFlag">
+    <input type="textarea" [formControl]= bodyComment > 
+    <br>
+    <button (click)= "commentArticle()"> Comentar </button>
+</div>

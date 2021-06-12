@@ -28,7 +28,12 @@ export class LoginComponent implements OnInit {
         password: this.formLogin.value.pass
       }
     }; 
-    this.service.getLogin(this.user).subscribe( (response: any) => this.userLogged = response); 
+    this.service.getLogin(this.user).subscribe( (response: any) => {
+      this.userLogged = response.user; 
+      console.log (response); 
+      console.log ("el Token es: ", this.userLogged.token); 
+      this.service.saveToken(this.userLogged.token); 
+    }); 
   } 
 
   actualUser () {

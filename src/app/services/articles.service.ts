@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'; 
+import { HttpClient, HttpHeaders } from '@angular/common/http'; 
+import { LoginService } from './login.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +13,11 @@ export class ArticlesService {
   articles: any = []; 
   anArticle:  any; 
   listComments: any; 
+  header = new HttpHeaders; 
+  token: string = ''; 
+  commentRealise: any; 
 
-  constructor( private http: HttpClient) { }; 
+  constructor( private http: HttpClient, private userService: LoginService) { }; 
 
   getArticles () {
     console.log ('Vamos a recuperar los últimos 10 temas del foro '); 
@@ -30,12 +34,29 @@ export class ArticlesService {
   }; 
   getAnArticle (index: number) {
     this.anArticle = this.articles[index]; 
+    this.slug = this.anArticle.slug; 
     console.log ("el index es: ", index); 
     console.log (this.articles[index]); 
   } 
-  getComments (slug: any) { 
-    console.log ("vamos a obtener la lista de comentarios de l artículo... "); 
-    return this.http.get<any>( this.urlBase + "/" + slug ); 
-  }
-  
-}
+  getComments () { 
+    let urlComments = this.urlBase + "/" + this.slug + "/comments"; 
+    this.listComments = this.http.get<any>(urlComments); 
+    return this.listComments; 
+  } 
+
+  postComment (comment: any) { 
+    let urlComment = this.urlBase + "/" + this.slug + '/comments'; 
+    let newComment = {
+      comment: {
+        body : comment
+      }
+    }; 
+    this.token = this.userService.getToken(); 
+    this.header = this.header.set('Authorization', 'Token ' + this.token); 
+    console.log("la url construida es: ", urlComment); 
+    console.log("el nuevo header es: ", this.header); 
+    console.log("el comentario realizado es: ", newComment), 
+    this.http.post( urlComment, newComment, {headers: this.header}).subscribe( reponse => this.commentRealise = reponse ); 
+    return this.commentRealise 
+  } 
+} 

@@ -7,15 +7,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class RegisterService {
 
   user: any; 
-  userAuth: any; 
   urlBase = 'https://conduit.productionready.io/api/users'; 
   
   constructor( private http: HttpClient ) { } 
 
-  registerUser (email: string, pass: string) {
-    return this.http.post<any>( this.urlBase, 
-      { user:{ email: email, password: pass 
-    }}).subscribe ( (response:any) => this.userAuth = response )
+  registerUser (user: string, email: string, pass: string) {
+    return this.http.post<any>(this.urlBase, 
+          { user:{ username: user, email: email, password: pass }}
+    )
   }
 
   
