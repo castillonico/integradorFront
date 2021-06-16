@@ -11,7 +11,10 @@ import { AnArticleComponent } from './foro/articles/an-article/an-article.compon
 import { CommentsComponent } from './foro/articles/an-article/comments/comments.component';
 import { HeaderComponent } from './public/header/header.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, ReactiveFormsModule } from '@angular/forms'; 
+
+import { AppMaterialModule } from './app-material.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 
 @NgModule({
   declarations: [
@@ -28,7 +31,9 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AppMaterialModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
