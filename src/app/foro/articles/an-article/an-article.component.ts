@@ -44,6 +44,9 @@ export class AnArticleComponent implements OnInit {
   commentArticle () { 
     console.log ("El comentario sería...:", this.bodyComment.value ); 
     this.aNewComment = this.service.postComment(this.bodyComment.value);  
+    this.showComments = !this.showComments; 
+    this.commentFlag = !this.commentFlag; 
+    this.loadComments (); 
   } 
 
 }

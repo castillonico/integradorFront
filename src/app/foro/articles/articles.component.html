@@ -1,6 +1,6 @@
 
-<div *ngFor="let item of articles, index as i "> 
+<mat-card *ngFor="let item of articles, index as i "> 
     <h3> {{item.title}} </h3> 
     <h5> {{item.body}} </h5> 
-    <button (click)= "loadAnArticle(i)" mat-icon-button color="link"></button> 
-</div> 
+    <button (click)= "loadAnArticle(i)" mat-stroked-button color="primary"> Ver Articulo </button> 
+</mat-card> 

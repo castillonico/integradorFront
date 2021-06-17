@@ -1,8 +1,14 @@
 
 <form [formGroup]="formLogin">
-    <input formControlName= "email" type="text" > E-mail: 
-    <input formControlName = "pass" type="password" > Password 
-    <button (click)="loadLogin()"> Ingresar </button>
+    <mat-form-field>
+        <input formControlName= "email" type="text" matInput placeholder="E-Mail" > 
+    </mat-form-field> 
+    <br>
+    <mat-form-field>
+        <input formControlName = "pass" type="password" matInput placeholder="Password" >
+    </mat-form-field> 
+    <br>
+    <button (click)="loadLogin()" mat-raised-button color="primary" > Ingresar </button> 
+    <button (click)= "actualUser()" mat-raised-button color="basic"> Ver Usuario </button>
 </form>
 
-<button (click)= "actualUser()"> Ver Usuario </button>

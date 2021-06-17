@@ -1,0 +1,23 @@
+mat-card { 
+    margin: auto; 
+    margin-top: 5px;
+    padding: 10px; 
+    max-width: 35%; 
+} 
+p {
+    margin: auto;
+    margin: 5px; 
+    padding: 5px; 
+} 
+button { 
+    margin: 10px; 
+} 
+textarea { 
+    margin: auto; 
+    margin: 5px; 
+    padding: 5px; 
+    width: 300px;
+} 
+li { 
+    list-style: none;
+}

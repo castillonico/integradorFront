@@ -1,28 +1,39 @@
-<br>
-<button (click)="goBackArticles()"> Volver </button>
 
-<h3>{{anArticle.title}}</h3> 
-<h4>{{anArticle.body}}</h4> 
-<button (click)="toggleDetails()"> Detalles </button> 
+<br> 
 <br>
-<button (click)="loadComments()"> Ver Comentarios </button> 
+<mat-card>
+    <h3>{{anArticle.title}}</h3> 
+    <h4>{{anArticle.body}}</h4> 
+    <button (click)="loadComments()" mat-raised-button > Ver Comentarios </button> 
+    <button (click)="goBackArticles()" mat-raised-button color="primary"> Volver </button>
+    <br>
+    <button (click)="toggleDetails()" mat-raised-button > Detalles </button> 
+    <button (click)= "letComment()" mat-raised-button color="primary"> Agregar Comentario </button> 
+    <br>
+    <p *ngIf="details"> 
+        {{anArticle.author.username}} 
+        {{anArticle.createdAt}} 
+        {{anArticle.tagList}} 
+    </p>
+</mat-card>
 
-<p *ngIf="details"> 
-    {{anArticle.author.username}} 
-    {{anArticle.createdAt}} 
-    {{anArticle.tagList}} 
-</p>
+<mat-card *ngIf="commentFlag"> 
+    <h3> Deje su comentario aqui:  </h3>    
+        <mat-form-field>
+            <textarea matInput [formControl]= bodyComment ></textarea>
+        </mat-form-field>
+        <br>
+        <button (click)= "commentArticle()" mat-raised-button color="accent"> Comentar </button>
+</mat-card>
 
 <ul *ngIf="showComments">
-    <li *ngFor="let item of listOfComments">
-        <h5>{{item.author.username}}</h5> 
-        <p>{{item.body}}</p>
+    <li *ngFor="let item of listOfComments"> 
+        <mat-card>
+            <h5>{{item.author.username}}</h5> 
+            <p>{{item.body}}</p> 
+        </mat-card>
     </li>
 </ul> 
 
-<button (click)= "letComment()"> Agregar Comentario </button> 
-<div *ngIf="commentFlag">
-    <input type="textarea" [formControl]= bodyComment > 
-    <br>
-    <button (click)= "commentArticle()"> Comentar </button>
-</div>
+
+

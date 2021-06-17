@@ -1,0 +1,9 @@
+mat-card { 
+    margin: auto; 
+    margin-top: 5px;
+    padding: 10px; 
+    max-width: 35%; 
+} 
+button { 
+    margin: 5px;
+}

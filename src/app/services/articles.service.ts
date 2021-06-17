@@ -21,7 +21,7 @@ export class ArticlesService {
 
   getArticles () {
     console.log ('Vamos a recuperar los últimos 10 temas del foro '); 
-    return this.http.get<any>(this.urlBase + '?limit=10'); 
+    return this.http.get<any>(this.urlBase + '?limit=30'); 
   }; 
   getArticlesByTag (tagFilter: string) { 
     console.log ("Vamos a filtrar los primeros 100 artículos con el tag: ", tagFilter); 
