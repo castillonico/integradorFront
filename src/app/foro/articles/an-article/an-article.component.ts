@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ArticlesService } from 'src/app/services/articles.service';
@@ -15,7 +15,8 @@ export class AnArticleComponent implements OnInit {
   showComments: boolean = false; 
   listOfComments: any = []; 
   details: boolean = false; 
-  commentFlag: boolean = false;
+  commentFlag: boolean = false; 
+  loadingComments: boolean = false; 
   bodyComment = new FormControl (""); 
   aNewComment: any;
 
@@ -25,12 +26,14 @@ export class AnArticleComponent implements OnInit {
     this.anArticle = this.service.anArticle; 
   }
 
-  loadComments () {
+  loadComments () { 
+    this.loadingComments = true; 
     this.slug = this.anArticle.slug; 
     console.log ("el Slug es: ", this.slug); 
-    this.service.getComments().subscribe( (response: any) => this.listOfComments = response.comments); 
+    this.service.getComments().subscribe( (response: any) => {this.listOfComments = response.comments; 
+    this.loadingComments = false; 
+  }); 
     this.showComments = !this.showComments; 
-    console.log("la Lista de comentarios es: ", this.listOfComments); 
   } 
   toggleDetails() { 
     this.details = !this.details; 
@@ -43,10 +46,12 @@ export class AnArticleComponent implements OnInit {
   }
   commentArticle () { 
     console.log ("El comentario sería...:", this.bodyComment.value ); 
-    this.aNewComment = this.service.postComment(this.bodyComment.value);  
-    this.showComments = !this.showComments; 
-    this.commentFlag = !this.commentFlag; 
-    this.loadComments (); 
+    this.service.postComment(this.bodyComment.value).subscribe( (reponse: any) => {this.aNewComment = reponse; 
+        this.showComments = !this.showComments; 
+        this.commentFlag = !this.commentFlag; 
+        this.loadComments ();
+    });   
+     
   } 
 
 }

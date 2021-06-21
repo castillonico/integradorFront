@@ -52,10 +52,6 @@ export class ArticlesService {
     }; 
     this.token = this.userService.getToken(); 
     this.header = this.header.set('Authorization', 'Token ' + this.token); 
-    console.log("la url construida es: ", urlComment); 
-    console.log("el nuevo header es: ", this.header); 
-    console.log("el comentario realizado es: ", newComment), 
-    this.http.post( urlComment, newComment, {headers: this.header}).subscribe( reponse => this.commentRealise = reponse ); 
-    return this.commentRealise 
+    return this.http.post( urlComment, newComment, {headers: this.header})
   } 
 } 
