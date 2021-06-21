@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ArticlesService } from 'src/app/services/articles.service';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-an-article',
@@ -20,7 +21,7 @@ export class AnArticleComponent implements OnInit {
   bodyComment = new FormControl (""); 
   aNewComment: any;
 
-  constructor( private service: ArticlesService, private routes: Router ) { }
+  constructor( private service: ArticlesService, private routes: Router, private login: LoginService ) { }
 
   ngOnInit () { 
     this.anArticle = this.service.anArticle; 
@@ -42,16 +43,19 @@ export class AnArticleComponent implements OnInit {
     this.routes.navigate(['articles']); 
   } 
   letComment () { 
-    this.commentFlag = !this.commentFlag; 
+    if ( this.login.checkLogin() ) { 
+      this.commentFlag = !this.commentFlag; 
+    } else { 
+      console.log ("No se puede comentar porque el usuario no está registrado")
+    }
   }
   commentArticle () { 
     console.log ("El comentario sería...:", this.bodyComment.value ); 
     this.service.postComment(this.bodyComment.value).subscribe( (reponse: any) => {this.aNewComment = reponse; 
         this.showComments = !this.showComments; 
         this.commentFlag = !this.commentFlag; 
-        this.loadComments ();
-    });   
-     
+        this.loadComments ()
+    }); 
   } 
 
 }

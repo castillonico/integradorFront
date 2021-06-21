@@ -23,4 +23,7 @@ li {
 } 
 mat-spinner { 
     margin: auto;
+} 
+section { 
+    margin-top: 50px;
 }

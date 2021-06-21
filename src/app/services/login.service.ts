@@ -23,5 +23,13 @@ export class LoginService {
   getToken () { 
     return this.token; 
   } 
+  
+  checkLogin () {
+    if (this.userLogged) {
+      return true; 
+    } else { 
+      return false
+    }
+  }
 
 }
