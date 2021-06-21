@@ -1,17 +1,16 @@
 
-<div id="buscador" > 
+<form [formGroup]="busqueda" id="buscador" > 
     <mat-form-field>
-        <mat-select>
-            <mat-option *ngFor="let item of optionSearch" value="item.value" >
-                {{item}}
-            </mat-option> 
+        <mat-select [(value)]="selectedValue" >
+            <mat-option value= "Autor" > Autor </mat-option> 
+            <mat-option value= "tag" > Etiqueta </mat-option> 
         </mat-select>
     </mat-form-field> 
     <mat-form-field> 
-        <input matInput placeholder="Completar Criterio" >
+        <input matInput placeholder="Completar Criterio" formControlName="criterio" >
     </mat-form-field> 
-    <button mat-stroked-button color="primary" > Buscar </button>
-</div>
+    <button mat-stroked-button color="primary" (click)="search()" > Buscar </button>
+</form>
 
 
 <mat-card *ngFor="let item of articles, index as i "> 

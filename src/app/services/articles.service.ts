@@ -29,8 +29,7 @@ export class ArticlesService {
   }; 
   getArticlesByAuthor (authorFilter: string) { 
     console.log ("Vamos a obtener los primeros cien artículos pertenecientes al autor: ", authorFilter); 
-    this.articles = this.http.get<any>( this.urlBase + '?limit=100&?author=' + authorFilter); 
-    return this.articles;
+    return this.http.get<any>( this.urlBase + '?author=' + authorFilter); 
   }; 
   getAnArticle (index: number) {
     this.anArticle = this.articles[index]; 

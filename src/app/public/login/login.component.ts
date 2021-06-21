@@ -36,8 +36,4 @@ export class LoginComponent implements OnInit {
     }); 
   } 
 
-  actualUser () {
-    console.log ("El usuario es: ", this.userLogged); 
-  }
-
 }

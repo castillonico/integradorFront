@@ -1,4 +1,6 @@
+import { nullSafeIsEquivalent } from '@angular/compiler/src/output/output_ast';
 import { Component, EventEmitter, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router'; 
 
 import { ArticlesService } from 'src/app/services/articles.service';
@@ -11,7 +13,12 @@ import { ArticlesService } from 'src/app/services/articles.service';
 export class ArticlesComponent implements OnInit{
 
   articles: any = []; 
+  selectedValue: string = ""; 
   optionSearch = ["Etiqueta", "Autor"]; 
+  busqueda = new FormGroup ({ 
+    opcion: new FormControl(), 
+    criterio: new FormControl()
+  }); 
   constructor( private serviceArticles: ArticlesService, private routes: Router ) { } 
 
   ngOnInit () {
@@ -30,4 +37,25 @@ export class ArticlesComponent implements OnInit{
     this.routes.navigate(['anArticle']); 
     this.serviceArticles.getAnArticle(i);  
   } 
+
+  search () { 
+    if ( this.selectedValue === "Autor" ) { 
+      console.log ( "La opcion es: ", this.selectedValue ); 
+      console.log ( "La palabra de busqueda es: ", this.busqueda.value.criterio ); 
+      this.serviceArticles.getArticlesByAuthor(this.busqueda.value.criterio).subscribe 
+      ((response: { articles: any; }) => 
+        {this.articles = response.articles; 
+        this.serviceArticles.articles = this.articles; 
+      });
+    } else { 
+      console.log ( "La opcion es: ", this.selectedValue ); 
+      console.log ( "La palabra de busqueda es: ", this.busqueda.value.criterio ); 
+      this.serviceArticles.getArticlesByTag(this.busqueda.value.criterio).subscribe 
+      ((response: { articles: any; }) => 
+        {this.articles = response.articles; 
+        this.serviceArticles.articles = this.articles; 
+      });
+    }
+
+  }
 } 
