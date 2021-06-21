@@ -1,7 +1,21 @@
-<form [formGroup]="regForm">
-    <input formControlName="newUser" type="text"> Usuario 
-    <input formControlName="newMail" type="email"> Email 
-    <input formControlName="newPass" type="password"> Password
-</form> 
+<h3> Crear un Nuevo Usuario </h3>
 
-<button (click)="createUser()" mat-risen-button color="primary"> Crear Usuario </button>
+<mat-card>
+    <form [formGroup]="regForm"> 
+        <p>Completar los siguientes campos </p> 
+        <br>
+        <mat-form-field>
+            <input formControlName="newUser" type="text" placeholder="Nombre Usuario"> 
+        </mat-form-field> 
+        <br>
+        <mat-form-field>
+            <input formControlName="newMail" type="email" placeholder="E-mail" > 
+        </mat-form-field> 
+        <br>
+        <mat-form-field>
+        <input formControlName="newPass" type="password" placeholder="Contraseña"> 
+        </mat-form-field>
+    </form> 
+
+    <button (click)="createUser()" mat-rised-button color="primary"> Crear Usuario </button>
+</mat-card>

@@ -1,0 +1,11 @@
+mat-card { 
+    margin: 5px; 
+    width: 400px;
+}
+mat-form-field { 
+    width: 400px; 
+    display: flex;
+} 
+input { 
+    width: 300px;
+}

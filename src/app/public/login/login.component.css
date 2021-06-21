@@ -1,15 +1,18 @@
-form { 
-    margin: auto;
+mat-card { 
+    margin: 10px; 
+    width: 400px; 
+
 }
 
 mat-form-field { 
     margin: 5px; 
     padding: 5px; 
-    max-width: 500px; 
+    width: 200px; 
 } 
 input { 
     margin: 5px; 
-    padding: 5px;
+    padding: 5px; 
+    width: 200px;
 } 
 button {
     margin: 5px; 

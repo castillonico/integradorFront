@@ -11,6 +11,7 @@ import { ArticlesService } from 'src/app/services/articles.service';
 export class ArticlesComponent implements OnInit{
 
   articles: any = []; 
+  optionSearch = ["Etiqueta", "Autor"]; 
   constructor( private serviceArticles: ArticlesService, private routes: Router ) { } 
 
   ngOnInit () {

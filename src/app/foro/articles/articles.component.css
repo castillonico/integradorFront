@@ -2,8 +2,11 @@ mat-card {
     margin: auto; 
     margin-top: 5px;
     padding: 10px; 
-    max-width: 35%; 
+    max-width: 65%; 
 } 
 button { 
     margin: 5px;
+} 
+#buscador { 
+    margin-top: 30px;
 }

@@ -1,5 +1,6 @@
 
-<form [formGroup]="formLogin">
+<mat-card>
+    <form [formGroup]="formLogin">
     <mat-form-field>
         <input formControlName= "email" type="text" matInput placeholder="E-Mail" > 
     </mat-form-field> 
@@ -9,6 +10,8 @@
     </mat-form-field> 
     <br>
     <button (click)="loadLogin()" mat-raised-button color="primary" > Ingresar </button> 
-    <button (click)= "actualUser()" mat-raised-button color="basic"> Ver Usuario </button>
-</form>
+    </form>
+</mat-card>
+
+
 

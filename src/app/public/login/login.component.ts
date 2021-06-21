@@ -31,8 +31,6 @@ export class LoginComponent implements OnInit {
     }; 
     this.service.getLogin(this.user).subscribe( (response: any) => {
       this.userLogged = response.user; 
-      console.log (response); 
-      console.log ("el Token es: ", this.userLogged.token); 
       this.service.saveToken(this.userLogged.token); 
       this.routes.navigate(['home']);
     }); 

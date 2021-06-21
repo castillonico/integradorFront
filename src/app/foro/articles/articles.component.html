@@ -1,4 +1,19 @@
 
+<div id="buscador" > 
+    <mat-form-field>
+        <mat-select>
+            <mat-option *ngFor="let item of optionSearch" value="item.value" >
+                {{item}}
+            </mat-option> 
+        </mat-select>
+    </mat-form-field> 
+    <mat-form-field> 
+        <input matInput placeholder="Completar Criterio" >
+    </mat-form-field> 
+    <button mat-stroked-button color="primary" > Buscar </button>
+</div>
+
+
 <mat-card *ngFor="let item of articles, index as i "> 
     <h3> {{item.title}} </h3> 
     <h5> {{item.body}} </h5> 
