@@ -1,18 +1,22 @@
 
-<form [formGroup]="busqueda" id="buscador" > 
-    <mat-form-field>
-        <mat-select [(value)]="selectedValue" >
-            <mat-option value= "Autor" > Autor </mat-option> 
-            <mat-option value= "tag" > Etiqueta </mat-option> 
-        </mat-select>
-    </mat-form-field> 
-    <mat-form-field> 
-        <input matInput placeholder="Completar Criterio" formControlName="criterio" >
-    </mat-form-field> 
-    <button mat-stroked-button color="primary" (click)="search()" > Buscar </button>
-</form>
+<mat-card> 
+    <form [formGroup]="busqueda" id="buscador" > 
+        <mat-form-field>
+            <mat-label> Buscar por... </mat-label>
+            <mat-select [(value)]="selectedValue" > 
+                <mat-option> Ninguno </mat-option> 
+                <mat-option value= "Autor" > Autor </mat-option> 
+                <mat-option value= "tag" > Etiqueta </mat-option> 
+            </mat-select>
+        </mat-form-field> 
+        <mat-form-field> 
+            <input matInput placeholder="Completar Criterio" formControlName="criterio" >
+        </mat-form-field> 
+        <button mat-stroked-button color="primary" (click)="search()" > Buscar </button>
+    </form>
+</mat-card>
 
-
+<mat-spinner *ngIf="loadingArticles"></mat-spinner>
 <mat-card *ngFor="let item of articles, index as i "> 
     <h3> {{item.title}} </h3> 
     <h5> {{item.body}} </h5> 

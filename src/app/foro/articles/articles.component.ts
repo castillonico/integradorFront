@@ -13,6 +13,7 @@ import { ArticlesService } from 'src/app/services/articles.service';
 export class ArticlesComponent implements OnInit{
 
   articles: any = []; 
+  loadingArticles = true; 
   selectedValue: string = ""; 
   optionSearch = ["Etiqueta", "Autor"]; 
   busqueda = new FormGroup ({ 
@@ -31,6 +32,7 @@ export class ArticlesComponent implements OnInit{
       (response => 
         {this.articles = response.articles; 
         this.serviceArticles.articles = this.articles; 
+        this.loadingArticles = false; 
       }); 
   } 
   loadAnArticle ( i: any ) { 
@@ -39,6 +41,7 @@ export class ArticlesComponent implements OnInit{
   } 
 
   search () { 
+    this.loadingArticles = true; 
     if ( this.selectedValue === "Autor" ) { 
       console.log ( "La opcion es: ", this.selectedValue ); 
       console.log ( "La palabra de busqueda es: ", this.busqueda.value.criterio ); 
@@ -46,6 +49,7 @@ export class ArticlesComponent implements OnInit{
       ((response: { articles: any; }) => 
         {this.articles = response.articles; 
         this.serviceArticles.articles = this.articles; 
+        this.loadingArticles = false; 
       });
     } else { 
       console.log ( "La opcion es: ", this.selectedValue ); 
@@ -54,8 +58,8 @@ export class ArticlesComponent implements OnInit{
       ((response: { articles: any; }) => 
         {this.articles = response.articles; 
         this.serviceArticles.articles = this.articles; 
+        this.loadingArticles = false;                
       });
-    }
-
-  }
+    } 
+  } 
 } 
